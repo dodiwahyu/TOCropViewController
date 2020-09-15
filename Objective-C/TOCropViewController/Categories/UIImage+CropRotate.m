@@ -31,14 +31,14 @@
             alphaInfo == kCGImageAlphaPremultipliedFirst || alphaInfo == kCGImageAlphaPremultipliedLast);
 }
 
-- (UIImage *)croppedImageWithFrame:(CGRect)frame angle:(NSInteger)angle circularClip:(BOOL)circular
+- (UIImage *)croppedImageWithFrame:(CGRect)frame angle:(NSInteger)angle circular:(BOOL)circular setClip: (BOOL)isClip
 {
     UIImage *croppedImage = nil;
     UIGraphicsBeginImageContextWithOptions(frame.size, ![self hasAlpha] && !circular, self.scale);
     {
         CGContextRef context = UIGraphicsGetCurrentContext();
         
-        if (circular) {
+        if (circular && isClip) {
             CGContextAddEllipseInRect(context, (CGRect){CGPointZero, frame.size});
             CGContextClip(context);
         }
