@@ -25,7 +25,7 @@
 NS_ASSUME_NONNULL_BEGIN
 
 @interface UIImage (TOCropRotate)
-- (nonnull UIImage *)croppedImageWithFrame:(CGRect)frame angle:(NSInteger)angle circularClip:(BOOL)circular;
+- (UIImage *)croppedImageWithFrame:(CGRect)frame angle:(NSInteger)angle circular:(BOOL)circular setClip: (BOOL)isClip;
 @end
 
 NS_ASSUME_NONNULL_END

@@ -29,6 +29,7 @@
 @property (nonatomic, assign, readwrite) CGRect cropFrame;
 @property (nonatomic, assign, readwrite) NSInteger angle;
 @property (nonatomic, assign, readwrite) BOOL circular;
+@property (nonatomic, assign, readwrite) BOOL isClipEnabled;
 
 @property (atomic, strong) UIImage *croppedImage;
 
@@ -36,13 +37,14 @@
 
 @implementation TOActivityCroppedImageProvider
 
-- (instancetype)initWithImage:(UIImage *)image cropFrame:(CGRect)cropFrame angle:(NSInteger)angle circular:(BOOL)circular
+- (instancetype)initWithImage:(UIImage *)image cropFrame:(CGRect)cropFrame angle:(NSInteger)angle circular:(BOOL)circular setClip:(BOOL)isClip
 {
     if (self = [super initWithPlaceholderItem:[UIImage new]]) {
         _image = image;
         _cropFrame = cropFrame;
         _angle = angle;
         _circular = circular;
+        _isClipEnabled = isClip;
     }
     
     return self;
@@ -68,7 +70,7 @@
         return self.croppedImage;
     }
     
-    UIImage *image = [self.image croppedImageWithFrame:self.cropFrame angle:self.angle circularClip:self.circular];
+    UIImage *image = [self.image croppedImageWithFrame:self.cropFrame angle:self.angle circular:self.circular setClip:self.isClipEnabled];
     self.croppedImage = image;
     return self.croppedImage;
 }

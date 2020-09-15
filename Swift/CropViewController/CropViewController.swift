@@ -458,8 +458,8 @@ open class CropViewController: UIViewController, TOCropViewControllerDelegate {
      @param style The cropping style that will be used with this view controller (eg, rectangular, or circular)
      @param image The image that will be cropped
      */
-    public init(croppingStyle: CropViewCroppingStyle, image: UIImage) {
-        self.toCropViewController = TOCropViewController(croppingStyle: croppingStyle, image: image)
+    public init(croppingStyle: CropViewCroppingStyle, image: UIImage, enableClip: Bool) {
+        self.toCropViewController = TOCropViewController(croppingStyle: croppingStyle, image: image, setClip: enableClip)
         super.init(nibName: nil, bundle: nil)
         setUpCropController()
     }
