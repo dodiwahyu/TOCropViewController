@@ -347,6 +347,11 @@
 - (nonnull instancetype)initWithCroppingStyle:(TOCropViewCroppingStyle)style image:(nonnull UIImage *)image setClip:(BOOL)isClip NS_SWIFT_NAME(init(croppingStyle:image:setClip:));
 
 /**
+ Commits the crop action as if user pressed done button in the bottom bar themself
+ */
+- (void)commitCurrentCrop;
+
+/**
  Resets object of TOCropViewController class as if user pressed reset button in the bottom bar themself
  */
 - (void)resetCropViewLayout;
